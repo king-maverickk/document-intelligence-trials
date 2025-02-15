@@ -9,16 +9,14 @@ from azure.ai.documentintelligence.models import AnalyzeDocumentRequest
 endpoint = os.getenv("AZURE_ENDPOINT")
 key = os.getenv("AZURE_KEY")
 
-def analyze_layout():
-    # document
-    formUrl = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf"
+def analyze_layout(document: str):
 
     document_intelligence_client = DocumentIntelligenceClient(
         endpoint=endpoint, credential=AzureKeyCredential(key)
     )
 
     poller = document_intelligence_client.begin_analyze_document(
-        "prebuilt-layout", AnalyzeDocumentRequest(url_source=formUrl
+        "prebuilt-layout", AnalyzeDocumentRequest(url_source=document
     ))
 
     # ^^ "prebuilt-layout" == https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/prebuilt/layout?view=doc-intel-4.0.0&tabs=sdks%2Csample-code
