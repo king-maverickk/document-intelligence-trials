@@ -21,8 +21,14 @@ def analyze_layout(document: str):
 
     # ^^ "prebuilt-layout" == https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/prebuilt/layout?view=doc-intel-4.0.0&tabs=sdks%2Csample-code
     # other prebuilt models. This is great so far.
-
-    result: AnalyzeResult = poller.result()
+    try:
+        poller = document_intelligence_client.begin_analyze_document(
+            "prebuilt-read", AnalyzeDocumentRequest(url_source=document)
+        )
+        result = poller.result()
+    except Exception as e:
+        print(f"Error analyzing document: {e}")
+        return
 
     if result.styles and any([style.is_handwritten for style in result.styles]):
         print("Document contains handwritten content")
