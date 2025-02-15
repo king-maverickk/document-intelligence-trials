@@ -1,0 +1,46 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Dependency management
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+poetry.lock
+
+# Logs and database files
+*.log
+*.sqlite3
+*.db
+
+# Python cache and compiled files
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Environment variables
+.env
+*.env
+.env.*.local
+
+# VS Code settings
+.vscode/
+
+# Azure-related files
+azure-pipelines.yml
+
+# Pytest cache
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
